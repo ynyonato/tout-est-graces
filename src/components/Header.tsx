@@ -49,7 +49,9 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-theme ${
-        scrolled ? "glass-nav shadow-sm py-2" : "bg-transparent py-4"
+        scrolled || isOpen
+          ? "bg-white/98 dark:bg-slate-900/98 backdrop-blur-md shadow-sm py-2"
+          : "bg-transparent py-4"
       }`}
     >
       {/* Gradient bottom border glow when scrolled */}
@@ -138,7 +140,7 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden absolute top-full left-0 right-0 w-full glass-effect shadow-lg py-6 px-8 flex flex-col gap-6"
+            className="md:hidden absolute top-full left-0 right-0 w-full bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-xl py-6 px-8 flex flex-col gap-6"
           >
             <nav className="flex flex-col gap-4 font-poppins text-base font-semibold">
               {navLinks.map((link) => {
