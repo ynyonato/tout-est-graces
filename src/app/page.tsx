@@ -160,7 +160,7 @@ export default function HomePage() {
             {/* 1. Formations Card (Back Card, rotated counter-clockwise) */}
             <div className="absolute top-[10%] left-[2%] w-[60%] h-[70%] rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-charcoal transform -rotate-12 hover:-rotate-4 hover:scale-[1.02] transition-all duration-300 z-10">
               <Image
-                src="/assets/training_class.png"
+                src="/assets/hero_formations.png"
                 alt="Formations Pratiques"
                 fill
                 className="object-cover"
@@ -173,7 +173,7 @@ export default function HomePage() {
             {/* 2. Bureautique Card (Middle Card, rotated clockwise) */}
             <div className="absolute top-0 right-0 w-[65%] h-[80%] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-charcoal transform rotate-6 hover:rotate-2 hover:scale-[1.02] transition-all duration-300 z-20">
               <Image
-                src="/assets/flyer_dynamisme_1.jpg"
+                src="/assets/hero_bureautique.png"
                 alt="Services Bureautiques"
                 fill
                 className="object-cover"
@@ -186,7 +186,7 @@ export default function HomePage() {
             {/* 3. Alimentation Card (Front/Top Card, slightly rotated counter-clockwise) */}
             <div className="absolute bottom-0 left-[15%] w-[55%] h-[60%] rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-charcoal transform -rotate-3 hover:rotate-0 hover:scale-[1.03] transition-all duration-300 z-30">
               <Image
-                src="/assets/spices_premium.png"
+                src="/assets/hero_alimentation.png"
                 alt="Alimentation Artisanale"
                 fill
                 className="object-cover"
