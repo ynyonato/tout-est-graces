@@ -140,17 +140,23 @@ function ServicesContent() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Header Title */}
-        <div className="text-center max-w-2xl mx-auto flex flex-col gap-4 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto flex flex-col gap-4 mb-12"
+        >
           <span className="font-poppins text-xs font-bold tracking-widest text-forest dark:text-gold uppercase">
             Nos Prestations
           </span>
           <h1 className="font-sora text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
             Des services façonnés pour votre quotidien
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed">
             Cliquez sur les onglets ci-dessous pour explorer nos différents catalogues d&apos;activité.
           </p>
-        </div>
+        </motion.div>
 
         {/* Tab Controls Selector */}
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mb-16 border-b border-slate-200 dark:border-slate-850 pb-6">
@@ -186,19 +192,19 @@ function ServicesContent() {
             {/* Catalog Info Column */}
             <div className="lg:col-span-5 flex flex-col gap-6 lg:sticky lg:top-[120px]">
               {/* Highlight image */}
-              <div className="relative h-64 md:h-80 w-full rounded-3xl overflow-hidden shadow-lg">
+              <div className="relative h-64 md:h-80 w-full rounded-3xl overflow-hidden shadow-lg group">
                 <Image
                   src={activeCatalog.image}
                   alt={activeCatalog.title}
                   fill
-                  className="object-cover"
+                  className="object-cover hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
 
               <h2 className="font-sora text-2xl md:text-3xl font-extrabold text-slate-800 dark:text-white mt-2">
                 {activeCatalog.title}
               </h2>
-              <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+              <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                 {activeCatalog.intro}
               </p>
 
@@ -225,7 +231,7 @@ function ServicesContent() {
                 {activeCatalog.products.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 hover:border-slate-200 dark:hover:border-slate-800 transition-theme flex flex-col gap-2 shadow-sm"
+                    className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 hover:border-slate-200 dark:hover:border-slate-800 transition-all duration-200 flex flex-col gap-2 shadow-sm hover:-translate-y-1 hover:shadow-md border-l-[3px] border-l-transparent hover:border-l-forest dark:hover:border-l-gold"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <h4 className="font-sora text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -233,7 +239,7 @@ function ServicesContent() {
                         {item.name}
                       </h4>
                     </div>
-                    <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
+                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
                       {item.desc}
                     </p>
                     <span className="text-[10px] font-bold font-poppins text-forest dark:text-gold uppercase tracking-wider mt-1 bg-slate-50 dark:bg-charcoal px-3 py-1 rounded-full w-fit">
@@ -248,9 +254,9 @@ function ServicesContent() {
                 <div className="p-3 bg-forest dark:bg-gold rounded-full text-white dark:text-slate-900 shrink-0">
                   <MousePointerClick size={16} />
                 </div>
-                <div className="text-xs">
+                <div className="text-sm">
                   <p className="font-bold text-slate-800 dark:text-white">Besoin d&apos;une tarification sur-mesure ?</p>
-                  <p className="text-slate-500 dark:text-slate-400 mt-0.5">Contactez notre promotrice directement pour vos commandes groupées ou demandes spéciales.</p>
+                  <p className="text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">Contactez notre promotrice directement pour vos commandes groupées ou demandes spéciales.</p>
                 </div>
               </div>
 

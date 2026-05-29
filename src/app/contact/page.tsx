@@ -11,7 +11,9 @@ import {
   HelpCircle,
   Plus,
   Minus,
-  Clock
+  Clock,
+  User,
+  MessageSquare
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -58,6 +60,16 @@ export default function ContactPage() {
     }
   ];
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  } as const;
+
+  const staggerContainer = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12 } }
+  } as const;
+
   return (
     <div className="py-12 md:py-20 font-inter">
       <div className="max-w-7xl mx-auto px-6">
@@ -70,63 +82,69 @@ export default function ContactPage() {
           <h1 className="font-sora text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
             Nous Contacter
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed">
             Une commande, une inscription à nos formations ou un document urgent à saisir ? Écrivez-nous ou rendez-nous visite.
           </p>
         </div>
 
         {/* Contact Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+        >
           
           {/* Phone */}
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
+          <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
             <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-650 dark:text-emerald-400 rounded-2xl w-fit">
               <Phone size={20} />
             </div>
             <h3 className="font-sora text-lg font-bold text-slate-800 dark:text-white">
               Téléphone & WhatsApp
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               Disponible pour appel direct ou messages instantanés pour commandes et support.
             </p>
             <a href="tel:+22892151326" className="font-poppins text-sm font-bold text-forest dark:text-gold hover:underline mt-2">
               +228 92 15 13 26
             </a>
-          </div>
+          </motion.div>
 
           {/* Address */}
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
+          <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
             <div className="p-3 bg-amber-50 dark:bg-amber-950/20 text-amber-600 dark:text-amber-400 rounded-2xl w-fit">
               <MapPin size={20} />
             </div>
             <h3 className="font-sora text-lg font-bold text-slate-800 dark:text-white">
               Notre Adresse
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               Atakpamé, Route de Nangbéto, Région des Plateaux, Togo.
             </p>
             <span className="font-poppins text-sm font-bold text-forest dark:text-gold mt-2">
               Région des Plateaux, Togo
             </span>
-          </div>
+          </motion.div>
 
           {/* Email */}
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
+          <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
             <div className="p-3 bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded-2xl w-fit">
               <Mail size={20} />
             </div>
             <h3 className="font-sora text-lg font-bold text-slate-800 dark:text-white">
               Email Professionnel
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
               Pour des demandes de devis bureautiques ou partenariats commerciaux.
             </p>
             <a href="mailto:contact@toutestgrace.tg" className="font-poppins text-sm font-bold text-forest dark:text-gold hover:underline mt-2">
               contact@toutestgrace.tg
             </a>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
         {/* Form and Map wrapper */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
@@ -154,58 +172,70 @@ export default function ContactPage() {
               <form onSubmit={handleFormSubmit} className="flex flex-col gap-4 text-sm font-inter">
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="name" className="text-xs font-semibold text-slate-550 dark:text-slate-400">Nom complet</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    value={form.name}
-                    onChange={handleInputChange}
-                    placeholder="Ex: Koffi Mensah"
-                    className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme"
-                  />
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={form.name}
+                      onChange={handleInputChange}
+                      placeholder="Ex: Koffi Mensah"
+                      className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="phone" className="text-xs font-semibold text-slate-500 dark:text-slate-400">Téléphone</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      required
-                      value={form.phone}
-                      onChange={handleInputChange}
-                      placeholder="Ex: +228 92 15 13 26"
-                      className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme"
-                    />
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        value={form.phone}
+                        onChange={handleInputChange}
+                        placeholder="Ex: +228 92 15 13 26"
+                        className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme"
+                      />
+                    </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="email" className="text-xs font-semibold text-slate-500 dark:text-slate-400">Adresse Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleInputChange}
-                      placeholder="Ex: koffi.mensah@gmail.com"
-                      className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme"
-                    />
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={form.email}
+                        onChange={handleInputChange}
+                        placeholder="Ex: koffi.mensah@gmail.com"
+                        className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme"
+                      />
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="message" className="text-xs font-semibold text-slate-500 dark:text-slate-400">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    value={form.message}
-                    onChange={handleInputChange}
-                    placeholder="Décrivez votre besoin..."
-                    className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme resize-none"
-                  />
+                  <div className="relative">
+                    <MessageSquare className="absolute left-3 top-3.5 text-slate-400" size={16} />
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      required
+                      value={form.message}
+                      onChange={handleInputChange}
+                      placeholder="Décrivez votre besoin..."
+                      className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme resize-none"
+                    />
+                  </div>
                 </div>
 
                 <button
@@ -271,12 +301,19 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div className="flex flex-col gap-4 mt-4">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={staggerContainer}
+            className="flex flex-col gap-4 mt-4"
+          >
             {faqItems.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
-                <div
+                <motion.div
                   key={index}
+                  variants={fadeInUp}
                   className="rounded-2xl border border-slate-100 dark:border-slate-850 bg-white dark:bg-slate-900 transition-theme overflow-hidden"
                 >
                   <button
@@ -299,16 +336,16 @@ export default function ContactPage() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="px-6 pb-5 pt-1 border-t border-slate-50 dark:border-slate-850/50 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                        <div className="px-6 pb-5 pt-1 border-t border-slate-50 dark:border-slate-850/50 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
                           {faq.a}
                         </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
 
       </div>

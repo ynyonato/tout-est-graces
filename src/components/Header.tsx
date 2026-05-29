@@ -52,6 +52,10 @@ export default function Header() {
         scrolled ? "glass-nav shadow-sm py-2" : "bg-transparent py-4"
       }`}
     >
+      {/* Gradient bottom border glow when scrolled */}
+      {scrolled && (
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-forest/30 dark:via-gold/30 to-transparent" />
+      )}
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -66,7 +70,7 @@ export default function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`relative py-2 text-slate-800 dark:text-slate-200 hover:text-forest dark:hover:text-gold transition-theme ${
+                className={`relative py-2 text-slate-800 dark:text-slate-200 hover:text-forest dark:hover:text-gold transition-theme hover:scale-105 duration-200 ${
                   isActive ? "text-forest dark:text-gold font-bold" : ""
                 }`}
               >
@@ -74,7 +78,7 @@ export default function Header() {
                 {isActive && (
                   <motion.span
                     layoutId="activeNavIndicator"
-                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-forest dark:bg-gold rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-[3px] bg-forest dark:bg-gold rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}

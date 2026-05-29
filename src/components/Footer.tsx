@@ -23,7 +23,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-50 dark:bg-charcoal text-slate-700 dark:text-slate-350 pt-16 pb-8 transition-theme">
+    <footer className="gradient-border-top bg-slate-50 dark:bg-charcoal text-slate-700 dark:text-slate-350 pt-16 pb-8 transition-theme relative">
+      {/* Subtle dot pattern overlay */}
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
         
         {/* Brand Column */}
@@ -39,17 +41,17 @@ export default function Footer() {
               href="https://wa.me/22892151326"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-forest/10 hover:bg-forest/20 text-forest dark:text-gold dark:bg-gold/10 dark:hover:bg-gold/20 transition-theme"
+              className="p-3 rounded-full bg-forest/10 hover:bg-forest/20 text-forest dark:text-gold dark:bg-gold/10 dark:hover:bg-gold/20 transition-theme hover:scale-110 hover:shadow-md duration-200"
               aria-label="WhatsApp"
             >
-              <MessageCircle size={18} />
+              <MessageCircle size={20} />
             </a>
             <a
               href="#"
-              className="p-2.5 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-900/10 dark:hover:bg-blue-900/20 transition-theme flex items-center justify-center"
+              className="p-3 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-600 dark:bg-blue-900/10 dark:hover:bg-blue-900/20 transition-theme hover:scale-110 hover:shadow-md duration-200 flex items-center justify-center"
               aria-label="Facebook"
             >
-              <svg className="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
               </svg>
             </a>
@@ -123,7 +125,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-405 font-inter gap-4">
+      <div className="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-slate-200/60 dark:border-slate-700/40 flex flex-col md:flex-row items-center justify-between text-xs text-slate-405 font-inter gap-4">
         <span>
           &copy; {currentYear} Ets Tout Est Grâce. Tous droits réservés.
         </span>

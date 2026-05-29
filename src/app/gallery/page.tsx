@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Maximize2, X, Info } from "lucide-react";
+import { Maximize2, X, Info, ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function GalleryPage() {
   const [filter, setFilter] = useState("all");
@@ -70,20 +70,26 @@ export default function GalleryPage() {
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Page Header */}
-        <div className="text-center max-w-2xl mx-auto flex flex-col gap-4 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto flex flex-col gap-4 mb-12"
+        >
           <span className="font-poppins text-xs font-bold tracking-widest text-forest dark:text-gold uppercase">
             Visuels & Artisanat
           </span>
           <h1 className="font-sora text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white">
             Galerie Ets Tout Est Grâce
           </h1>
-          <p className="text-slate-500 dark:text-slate-400 text-xs md:text-sm">
+          <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed">
             Découvrez nos ateliers, nos produits alimentaires artisanaux et nos installations bureautiques en images.
           </p>
-        </div>
+        </motion.div>
 
         {/* Filter Controls */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-12 bg-slate-50 dark:bg-slate-900/50 py-4 px-6 rounded-2xl">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -91,7 +97,7 @@ export default function GalleryPage() {
               className={`px-5 py-2.5 rounded-full font-poppins text-xs font-semibold tracking-wider transition-all cursor-pointer ${
                 filter === cat.id
                   ? "bg-forest text-white dark:bg-gold dark:text-slate-900 shadow-md scale-105"
-                  : "bg-slate-100 text-slate-655 hover:bg-slate-205 dark:bg-charcoal dark:text-slate-350 dark:hover:bg-slate-800"
+                  : "bg-white text-slate-655 hover:bg-slate-205 dark:bg-charcoal dark:text-slate-350 dark:hover:bg-slate-800"
               }`}
             >
               {cat.label}
@@ -114,7 +120,7 @@ export default function GalleryPage() {
                 transition={{ duration: 0.3 }}
                 key={item.id}
                 onClick={() => setSelectedImage(index)}
-                className="group relative h-80 rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-slate-100 dark:bg-charcoal"
+                className={`group relative rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-slate-100 dark:bg-charcoal ${index % 3 === 0 ? "h-96" : index % 3 === 1 ? "h-72" : "h-80"}`}
               >
                 <Image
                   src={item.src}
@@ -132,7 +138,7 @@ export default function GalleryPage() {
                     {item.title}
                     <Maximize2 size={16} className="text-white/80" />
                   </h3>
-                  <p className="text-slate-200 text-xs mt-1 leading-relaxed line-clamp-2">
+                  <p className="text-slate-200 text-sm mt-1 leading-relaxed line-clamp-2">
                     {item.desc}
                   </p>
                 </div>
@@ -180,7 +186,7 @@ export default function GalleryPage() {
                   <h3 className="font-sora text-lg font-bold">
                     {filteredItems[selectedImage].title}
                   </h3>
-                  <p className="text-slate-400 text-xs mt-1.5 flex items-center justify-center gap-1.5 leading-relaxed">
+                  <p className="text-slate-400 text-sm mt-1.5 flex items-center justify-center gap-1.5 leading-relaxed">
                     <Info size={12} className="shrink-0" />
                     {filteredItems[selectedImage].desc}
                   </p>
@@ -192,18 +198,20 @@ export default function GalleryPage() {
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6">
                   <button
                     onClick={() => setSelectedImage(prev => prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null)}
-                    className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-xs font-semibold cursor-pointer"
+                    className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full cursor-pointer transition-colors"
+                    aria-label="Image précédente"
                   >
-                    Précédent
+                    <ChevronLeft size={20} />
                   </button>
-                  <span className="text-white text-xs font-bold font-poppins">
+                  <span className="text-white text-sm font-bold font-poppins">
                     {selectedImage + 1} / {filteredItems.length}
                   </span>
                   <button
                     onClick={() => setSelectedImage(prev => prev !== null ? (prev + 1) % filteredItems.length : null)}
-                    className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-full text-xs font-semibold cursor-pointer"
+                    className="p-3 bg-white/10 hover:bg-white/20 text-white rounded-full cursor-pointer transition-colors"
+                    aria-label="Image suivante"
                   >
-                    Suivant
+                    <ChevronRight size={20} />
                   </button>
                 </div>
               )}

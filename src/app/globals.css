@@ -90,7 +90,163 @@ body {
   box-shadow: 0 0 20px rgba(230, 126, 34, 0.1);
 }
 
+/* Float animation for hero badge */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Animated gradient background for hero */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-gradient-bg {
+  background: radial-gradient(ellipse at 20% 50%, rgba(15, 112, 65, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(230, 126, 34, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(197, 168, 128, 0.04) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease-in-out infinite;
+}
+
+.dark .hero-gradient-bg {
+  background: radial-gradient(ellipse at 20% 50%, rgba(15, 112, 65, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(197, 168, 128, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, rgba(230, 126, 34, 0.04) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: gradient-shift 12s ease-in-out infinite;
+}
+
+/* Focus left border accent for form inputs */
+.input-focus-accent {
+  transition: border-left-width 0.2s ease, border-left-color 0.2s ease, padding-left 0.2s ease;
+}
+
+.input-focus-accent:focus {
+  border-left-width: 3px;
+  border-left-color: var(--color-forest);
+}
+
+.dark .input-focus-accent:focus {
+  border-left-color: var(--color-gold);
+}
+
 /* Smooth custom transitions */
 .transition-theme {
   transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Enhanced font smoothing */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Float animation for hero badge */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Focus glow utility for inputs */
+.focus-glow:focus,
+.focus-glow:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(15, 112, 65, 0.25), 0 0 12px rgba(15, 112, 65, 0.1);
+  border-color: var(--color-forest);
+}
+
+.dark .focus-glow:focus,
+.dark .focus-glow:focus-within {
+  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.3), 0 0 12px rgba(197, 168, 128, 0.12);
+  border-color: var(--color-gold);
+}
+
+/* Gradient border top for footer */
+.gradient-border-top {
+  position: relative;
+}
+.gradient-border-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-forest), var(--color-gold), var(--color-sunset));
+  border-radius: 1px;
+}
+
+/* Wave divider for SVG section separators */
+.wave-divider {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Card shine hover effect */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+.card-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 60%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+.card-shine:hover::after {
+  left: 100%;
+}
+
+.dark .card-shine::after {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 60%,
+    transparent 100%
+  );
+}
+
+/* Counter animate */
+.counter-animate {
+  display: inline-block;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.counter-animate[data-visible="true"] {
+  animation: countUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
