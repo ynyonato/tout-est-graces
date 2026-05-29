@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-sand-light: #FFFFFF;
+  --color-sand: #FAF9F6;
+  --color-sand-dark: #F0EFEA;
+  --color-forest: #0f7041;
+  --color-forest-dark: #004724;
+  --color-sunset: #e67e22;
+  --color-sunset-dark: #d35400;
+  --color-gold: #c5a880;
+  --color-silver: #8e8e93;
+  --color-deepblack: #0c0c0c;
+  --color-charcoal: #181818;
+  
+  --font-sora: var(--font-sora), system-ui, sans-serif;
+  --font-poppins: var(--font-poppins), system-ui, sans-serif;
+  --font-inter: var(--font-inter), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5a880;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a38965;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+}
+
+.font-sora {
+  font-family: var(--font-sora);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+/* Glassmorphism Utility Classes */
+.glass-effect {
+  background: rgba(250, 248, 245, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.dark .glass-effect {
+  background: rgba(12, 12, 12, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-nav {
+  background: rgba(250, 248, 245, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.dark .glass-nav {
+  background: rgba(12, 12, 12, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Hover glow lines */
+.glow-gold {
+  box-shadow: 0 0 20px rgba(197, 168, 128, 0.12);
+}
+
+.glow-forest {
+  box-shadow: 0 0 20px rgba(15, 112, 65, 0.1);
+}
+
+.glow-sunset {
+  box-shadow: 0 0 20px rgba(230, 126, 34, 0.1);
+}
+
+/* Smooth custom transitions */
+.transition-theme {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
