@@ -158,7 +158,7 @@ export default function HomePage() {
             className="relative h-[400px] md:h-[500px] w-full"
           >
             {/* 1. Formations Card (Back Card, rotated counter-clockwise) */}
-            <div className="absolute top-[10%] left-[2%] w-[60%] h-[70%] rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-charcoal transform -rotate-12 hover:-rotate-4 hover:scale-[1.02] transition-all duration-300 z-10">
+            <div className="absolute top-[4%] left-[-10%] w-[64%] h-[74%] rounded-3xl overflow-hidden shadow-xl border-4 border-white dark:border-charcoal transform -rotate-12 hover:-rotate-4 hover:scale-[1.02] transition-all duration-300 z-10">
               <Image
                 src="/assets/hero_formations.png"
                 alt="Formations Pratiques"
