@@ -125,8 +125,8 @@ export default function AboutPage() {
         </div>
 
         {/* Values Section */}
-        <div className="py-16 bg-slate-50 dark:bg-charcoal rounded-3xl px-8 md:px-12 border border-slate-100 dark:border-slate-850 transition-theme mb-24">
-          <div className="text-center max-w-2xl mx-auto flex flex-col gap-3 mb-12">
+        <div className="mb-24 py-10">
+          <div className="text-center max-w-2xl mx-auto flex flex-col gap-3 mb-16">
             <span className="font-poppins text-xs font-bold tracking-widest text-forest dark:text-gold uppercase">
               Nos Piliers
             </span>
@@ -137,11 +137,14 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((v) => (
-              <div key={v.title} className="flex flex-col gap-3 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 transition-theme">
-                <div className="p-3 bg-slate-50 dark:bg-charcoal rounded-xl w-fit">
+              <div 
+                key={v.title} 
+                className="flex flex-col gap-4 bg-white dark:bg-charcoal p-8 rounded-3xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300"
+              >
+                <div className="p-3 bg-forest/5 dark:bg-gold/5 text-forest dark:text-gold rounded-2xl w-fit">
                   {v.icon}
                 </div>
-                <h3 className="font-sora text-base font-bold text-slate-800 dark:text-white">
+                <h3 className="font-sora text-lg font-bold text-slate-800 dark:text-white">
                   {v.title}
                 </h3>
                 <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
