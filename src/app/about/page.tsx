@@ -160,7 +160,7 @@ export default function AboutPage() {
               <motion.div 
                 key={v.title}
                 variants={fadeInUp}
-                className={`flex flex-col gap-4 bg-white dark:bg-charcoal p-8 rounded-3xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 border-l-[3px] ${v.accent}`}
+                className={`flex flex-col gap-4 bg-white dark:bg-charcoal p-8 rounded-3xl shadow-sm hover:shadow-md cursor-pointer hover:scale-[1.02] transition-all duration-300 border-l-[3px] ${v.accent}`}
               >
                 <div className="p-3 bg-forest/5 dark:bg-gold/5 text-forest dark:text-gold rounded-2xl w-fit">
                   {v.icon}
