@@ -13,7 +13,10 @@ import {
   Minus,
   Clock,
   User,
-  MessageSquare
+  MessageSquare,
+  Award,
+  ShieldCheck,
+  Users
 } from "lucide-react";
 
 export default function ContactPage() {
@@ -93,11 +96,14 @@ export default function ContactPage() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
         >
           
           {/* Phone */}
-          <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
+          <motion.div 
+            variants={fadeInUp} 
+            className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer transition-theme"
+          >
             <div className="p-3 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-650 dark:text-emerald-400 rounded-2xl w-fit">
               <Phone size={20} />
             </div>
@@ -113,7 +119,10 @@ export default function ContactPage() {
           </motion.div>
 
           {/* Address */}
-          <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
+          <motion.div 
+            variants={fadeInUp} 
+            className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer transition-theme"
+          >
             <div className="p-3 bg-amber-50 dark:bg-amber-950/20 text-amber-600 dark:text-amber-400 rounded-2xl w-fit">
               <MapPin size={20} />
             </div>
@@ -129,7 +138,10 @@ export default function ContactPage() {
           </motion.div>
 
           {/* Email */}
-          <motion.div variants={fadeInUp} className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm transition-theme">
+          <motion.div 
+            variants={fadeInUp} 
+            className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-850 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer transition-theme"
+          >
             <div className="p-3 bg-blue-50 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 rounded-2xl w-fit">
               <Mail size={20} />
             </div>
@@ -144,6 +156,49 @@ export default function ContactPage() {
             </a>
           </motion.div>
 
+        </motion.div>
+
+        {/* TRUST & AUTHORITY SECTION: Garanties de Qualité */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20 p-8 rounded-3xl bg-slate-50 dark:bg-charcoal border border-slate-200/50 dark:border-slate-850 transition-theme"
+        >
+          <div className="flex gap-4 items-start">
+            <div className="p-3 bg-forest/10 text-forest dark:text-gold rounded-xl shrink-0">
+              <Award size={20} />
+            </div>
+            <div>
+              <h4 className="font-sora text-sm font-bold text-slate-800 dark:text-white">Qualité Locale & Naturelle</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                Nos épices et douceurs sont produites de manière artisanale à Atakpamé, 100% sans conservateur artificiel.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <div className="p-3 bg-forest/10 text-forest dark:text-gold rounded-xl shrink-0">
+              <ShieldCheck size={20} />
+            </div>
+            <div>
+              <h4 className="font-sora text-sm font-bold text-slate-800 dark:text-white">Engagement de Proximité</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                Nous assurons un service d'impression rapide et réactif, adapté aux exigences des professionnels.
+              </p>
+            </div>
+          </div>
+          <div className="flex gap-4 items-start">
+            <div className="p-3 bg-forest/10 text-forest dark:text-gold rounded-xl shrink-0">
+              <Users size={20} />
+            </div>
+            <div>
+              <h4 className="font-sora text-sm font-bold text-slate-800 dark:text-white">Suivi Pédagogique Actif</h4>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                Nos formations bureautiques sont limitées en nombre d'apprenants pour un suivi individuel optimal.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Form and Map wrapper */}
@@ -182,7 +237,7 @@ export default function ContactPage() {
                       value={form.name}
                       onChange={handleInputChange}
                       placeholder="Ex: Koffi Mensah"
-                      className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme"
+                      className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme"
                     />
                   </div>
                 </div>
@@ -200,7 +255,7 @@ export default function ContactPage() {
                         value={form.phone}
                         onChange={handleInputChange}
                         placeholder="Ex: +228 92 15 13 26"
-                        className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme"
+                        className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme"
                       />
                     </div>
                   </div>
@@ -215,7 +270,7 @@ export default function ContactPage() {
                         value={form.email}
                         onChange={handleInputChange}
                         placeholder="Ex: koffi.mensah@gmail.com"
-                        className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme"
+                        className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme"
                       />
                     </div>
                   </div>
@@ -233,7 +288,7 @@ export default function ContactPage() {
                       value={form.message}
                       onChange={handleInputChange}
                       placeholder="Décrivez votre besoin..."
-                      className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-forest/20 dark:focus:ring-gold/20 transition-theme resize-none"
+                      className="pl-10 pr-4 py-3 w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme resize-none"
                     />
                   </div>
                 </div>
