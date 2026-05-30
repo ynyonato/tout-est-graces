@@ -17,7 +17,8 @@ import {
   Send,
   Users,
   Award,
-  Sparkles
+  Sparkles,
+  ShieldCheck
 } from "lucide-react";
 
 export default function HomePage() {
@@ -279,6 +280,43 @@ export default function HomePage() {
               </div>
             </div>
 
+          </div>
+
+          {/* Nos Engagements de Qualité */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/40 dark:border-slate-800 shadow-sm transition-theme">
+            <div className="flex gap-4 items-start">
+              <div className="p-3 bg-forest/10 text-forest dark:text-gold rounded-xl shrink-0">
+                <Award size={20} />
+              </div>
+              <div>
+                <h4 className="font-sora text-sm font-bold text-slate-800 dark:text-white">Alimentation Saine</h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Épices et douceurs locales préparées artisanalement, 100% naturelles et sans additifs.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 items-start">
+              <div className="p-3 bg-forest/10 text-forest dark:text-gold rounded-xl shrink-0">
+                <ShieldCheck size={20} />
+              </div>
+              <div>
+                <h4 className="font-sora text-sm font-bold text-slate-800 dark:text-white">Impression Professionnelle</h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Des impressions haute définition et un secrétariat réactif pour toutes vos urgences.
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-4 items-start">
+              <div className="p-3 bg-forest/10 text-forest dark:text-gold rounded-xl shrink-0">
+                <Users size={20} />
+              </div>
+              <div>
+                <h4 className="font-sora text-sm font-bold text-slate-800 dark:text-white">Formations sur Mesure</h4>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Modules pratiques d'informatique en petits groupes avec un formateur dédié.
+                </p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </section>
@@ -588,7 +626,7 @@ export default function HomePage() {
                       value={form.name}
                       onChange={handleInputChange}
                       placeholder="Ex: Jean Koffi"
-                      className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme input-focus-accent"
+                      className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme"
                     />
                   </div>
 
@@ -604,7 +642,7 @@ export default function HomePage() {
                         value={form.phone}
                         onChange={handleInputChange}
                         placeholder="Ex: +228 92 15 13 26"
-                        className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme input-focus-accent"
+                        className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -616,7 +654,7 @@ export default function HomePage() {
                         value={form.email}
                         onChange={handleInputChange}
                         placeholder="Ex: jean.koffi@gmail.com"
-                        className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme input-focus-accent"
+                        className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme"
                       />
                     </div>
                   </div>
@@ -632,7 +670,7 @@ export default function HomePage() {
                       value={form.message}
                       onChange={handleInputChange}
                       placeholder="Comment pouvons-nous vous aider ?"
-                      className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus:outline-none focus:border-forest dark:focus:border-gold focus:bg-white dark:focus:bg-slate-900 transition-theme input-focus-accent resize-none"
+                      className="px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-charcoal text-slate-900 dark:text-white focus-glow input-focus-accent transition-theme resize-none"
                     />
                   </div>
 
